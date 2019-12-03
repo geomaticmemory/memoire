@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>memfarhat</title>
+	
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+    
+	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" ></script>
+</head>
+<body>
+<div id="mapid" style="width: 800px; height: 600px;"></div>
+<script>
+	var MACARTE = L.map('mapid').setView([36.80, 10.11], 11);
+	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+		maxZoom: 18,
+		attribution: '',
+		id: 'mapbox.streets'
+	}).addTo(MACARTE);
+L.tileLayer.wms("http://localhost:8080/geoserver/M2/wms?",{
+    layers: 'M2:qrts_GTunis',
+    format: 'image/png',
+    transparent: true,
+    attribution: "ETUDIANT"
+	}).addTo(MACARTE);
+</script>
+</body>
+</html>
